@@ -2,15 +2,20 @@ import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(cors());
 app.use(express.json());
-app.use(express.static('.'));
+app.use(express.static(__dirname));
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -52,7 +57,10 @@ app.post('/api/book-session', async (req, res) => {
     } = req.body || {};
 
     if (!clientName || !clientContact || !format) {
-      return res.status(400).json({ ok: false, error: 'Не заполнены обязательные поля.' });
+      return res.status(400).json({
+        ok: false,
+        error: 'Не заполнены обязательные поля.',
+      });
     }
 
     const safePsychologistName = escapeHtml(psychologistName || 'Попова Наталья Николаевна');
@@ -65,7 +73,7 @@ app.post('/api/book-session', async (req, res) => {
 
     const ownerRecipient = psychologistEmail || process.env.OWNER_EMAIL;
 
-    await transporter.sendMail({
+    const ownerMail = {
       from: `Сайт психолога <${process.env.SMTP_USER}>`,
       to: ownerRecipient,
       subject: `Новая заявка на консультацию: ${clientName}`,
@@ -82,10 +90,12 @@ app.post('/api/book-session', async (req, res) => {
           <p style="font-size:14px;color:#666;">Заявка отправлена с сайта: ${escapeHtml(process.env.SITE_URL || 'http://localhost:3000')}</p>
         </div>
       `,
-    });
+    };
+
+    await transporter.sendMail(ownerMail);
 
     if (looksLikeEmail(clientContact)) {
-      await transporter.sendMail({
+      const clientMail = {
         from: `Попова Наталья Николаевна <${process.env.SMTP_USER}>`,
         to: clientContact.trim(),
         subject: 'Ваша заявка принята',
@@ -102,14 +112,26 @@ app.post('/api/book-session', async (req, res) => {
             <p style="font-size:14px;color:#666;">Контакт для связи: ${safePsychologistEmail}</p>
           </div>
         `,
-      });
+      };
+
+      await transporter.sendMail(clientMail);
     }
 
-    return res.json({ ok: true, message: 'Заявка отправлена.' });
+    return res.json({
+      ok: true,
+      message: 'Заявка отправлена.',
+    });
   } catch (error) {
     console.error('book-session error:', error);
-    return res.status(500).json({ ok: false, error: 'Не удалось отправить заявку.' });
+    return res.status(500).json({
+      ok: false,
+      error: 'Не удалось отправить заявку.',
+    });
   }
+});
+
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {

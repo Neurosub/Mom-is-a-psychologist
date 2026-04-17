@@ -5,27 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Попова Наталья Николаевна — психолог</title>
   <meta name="description" content="Персональный сайт Поповой Натальи Николаевны с записью на онлайн-консультацию." />
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #f6f3ee;
-      --surface: rgba(255,255,255,.82);
+      --surface: rgba(255,255,255,.84);
       --text: #272522;
       --muted: #6e6a66;
       --primary: #7ea79c;
       --primary-dark: #5f877d;
-      --secondary: #eadccf;
       --border: rgba(39,37,34,.08);
       --shadow: 0 18px 45px rgba(63,57,50,.08);
       --radius-xl: 28px;
       --radius-lg: 22px;
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Manrope', sans-serif;
       background:
@@ -35,99 +38,328 @@
       color: var(--text);
       overflow-x: hidden;
     }
+
     .navbar {
       backdrop-filter: blur(16px);
       background: rgba(246,243,238,.78);
       border-bottom: 1px solid rgba(39,37,34,.05);
     }
-    .navbar-brand { font-weight: 800; letter-spacing: -.02em; }
-    .nav-link { color: var(--text); font-weight: 600; }
+
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .nav-link {
+      color: var(--text);
+      font-weight: 600;
+    }
+
     .btn-brand {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff; border: none; border-radius: 999px; padding: .9rem 1.35rem; font-weight: 700;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: .9rem 1.35rem;
+      font-weight: 700;
       box-shadow: 0 10px 30px rgba(126,167,156,.25);
     }
-    .btn-brand:hover, .btn-brand:focus { color:#fff; }
+
+    .btn-brand:hover,
+    .btn-brand:focus {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    }
+
     .btn-soft {
-      background: rgba(255,255,255,.78); border:1px solid var(--border); color:var(--text);
-      border-radius:999px; padding:.9rem 1.35rem; font-weight:700;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .9rem 1.35rem;
+      font-weight: 700;
+      color: var(--text);
     }
-    .hero { min-height:100vh; display:flex; align-items:center; padding:8rem 0 4rem; }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 4rem;
+    }
+
     .hero-badge {
-      display:inline-flex; align-items:center; gap:.6rem; background:rgba(255,255,255,.82);
-      padding:.55rem .9rem; border-radius:999px; font-size:.95rem; font-weight:700;
-      border:1px solid var(--border); color:var(--primary-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(255,255,255,.82);
+      padding: .55rem .9rem;
+      border-radius: 999px;
+      font-size: .95rem;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      color: var(--primary-dark);
     }
-    .hero h1 { font-size: clamp(2.5rem, 5vw, 4.8rem); line-height:.98; letter-spacing:-.04em; font-weight:800; }
-    .lead-custom { font-size:1.08rem; color:var(--muted); max-width:640px; }
-    .hero-visual { position:relative; min-height:560px; }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: .98;
+      letter-spacing: -.04em;
+      font-weight: 800;
+    }
+
+    .lead-custom {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 560px;
+    }
+
     .photo-frame {
-      position:absolute; inset:40px 60px 0 20px; background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.74));
-      border-radius:34px; padding:18px; border:1px solid rgba(255,255,255,.65); box-shadow:var(--shadow);
+      position: absolute;
+      inset: 40px 60px 0 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.74));
+      border-radius: 34px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.65);
+      box-shadow: var(--shadow);
     }
-    .photo-frame img, .split-photo img { width:100%; height:100%; object-fit:cover; border-radius:26px; }
-    .floating-stat, .floating-note {
-      position:absolute; background:rgba(255,255,255,.90); border-radius:22px; padding:1rem 1.1rem;
-      box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.6); backdrop-filter:blur(14px);
+
+    .photo-frame img,
+    .split-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 26px;
     }
-    .floating-stat { left:0; bottom:40px; width:220px; }
-    .floating-note { right:0; top:40px; width:240px; }
-    .section { padding:5rem 0; }
-    .section-title { font-size:clamp(2rem,4vw,3.2rem); line-height:1.02; letter-spacing:-.03em; font-weight:800; }
-    .section-subtitle { color:var(--muted); max-width:700px; }
-    .glass-card, .feature-card, .service-card, .contact-card, .timeline-card, .form-card, .mini-card, .testimonial-card {
-      background:rgba(255,255,255,.84); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.4rem; box-shadow:var(--shadow);
+
+    .floating-stat,
+    .floating-note {
+      position: absolute;
+      background: rgba(255,255,255,.90);
+      border-radius: 22px;
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.6);
+      backdrop-filter: blur(14px);
     }
-    .glass-card { padding:2rem; border-radius:var(--radius-xl); }
+
+    .floating-stat {
+      left: 0;
+      bottom: 40px;
+      width: 220px;
+    }
+
+    .floating-note {
+      right: 0;
+      top: 40px;
+      width: 240px;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .glass-card,
+    .feature-card,
+    .service-card,
+    .contact-card,
+    .timeline-card,
+    .form-card,
+    .mini-card,
+    .testimonial-card {
+      background: rgba(255,255,255,.84);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .glass-card {
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      height: 100%;
+    }
+
     .icon-pill {
-      width:52px; height:52px; display:inline-flex; align-items:center; justify-content:center;
-      border-radius:16px; background:rgba(126,167,156,.14); color:var(--primary-dark); font-size:1.3rem; margin-bottom:1rem;
+      width: 52px;
+      height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: rgba(126,167,156,.14);
+      color: var(--primary-dark);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
     }
+
     .split-photo {
-      min-height:100%; background:linear-gradient(160deg, rgba(126,167,156,.18), rgba(234,220,207,.44));
-      border-radius:28px; padding:1.2rem; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.65);
+      min-height: 100%;
+      background: linear-gradient(160deg, rgba(126,167,156,.18), rgba(234,220,207,.44));
+      border-radius: 28px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.65);
     }
-    .split-photo img { min-height:420px; }
-    .stat-number { font-size:2rem; font-weight:800; letter-spacing:-.03em; }
-    .timeline-item { display:flex; gap:1rem; align-items:flex-start; margin-bottom:1rem; }
-    .timeline-dot { width:14px; height:14px; border-radius:50%; background:var(--primary); margin-top:.5rem; flex-shrink:0; box-shadow:0 0 0 8px rgba(126,167,156,.12); }
-    .testimonial-card { min-height:260px; }
+
+    .split-photo img {
+      min-height: 420px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      margin-top: .5rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 8px rgba(126,167,156,.12);
+    }
+
+    .testimonial-card {
+      min-height: 260px;
+    }
+
     .accordion-item {
-      border:1px solid var(--border); border-radius:18px !important; overflow:hidden; background:rgba(255,255,255,.84);
-      margin-bottom:1rem; box-shadow:var(--shadow);
+      border: 1px solid var(--border);
+      border-radius: 18px !important;
+      overflow: hidden;
+      background: rgba(255,255,255,.84);
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
     }
-    .accordion-button { font-weight:700; background:rgba(255,255,255,.84); }
-    .accordion-button:not(.collapsed) { color:var(--text); background:rgba(126,167,156,.10); box-shadow:none; }
-    .form-control, .form-select { border-radius:16px; border:1px solid rgba(39,37,34,.12); padding:.95rem 1rem; }
-    .form-control:focus, .form-select:focus { box-shadow:0 0 0 .25rem rgba(126,167,156,.18); border-color:var(--primary); }
+
+    .accordion-button {
+      font-weight: 700;
+      background: rgba(255,255,255,.84);
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: var(--text);
+      background: rgba(126,167,156,.10);
+      box-shadow: none;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 16px;
+      border: 1px solid rgba(39,37,34,.12);
+      padding: .95rem 1rem;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      box-shadow: 0 0 0 .25rem rgba(126,167,156,.18);
+      border-color: var(--primary);
+    }
+
     .birthday-banner {
-      background:linear-gradient(135deg, rgba(234,220,207,.26), rgba(126,167,156,.14)); border:1px solid var(--border);
-      border-radius:28px; padding:1.5rem; box-shadow:var(--shadow);
+      background: linear-gradient(135deg, rgba(234,220,207,.26), rgba(126,167,156,.14));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
     }
+
     .floating-cta {
-      position:fixed; right:18px; bottom:18px; z-index:1050; border-radius:999px; padding:.95rem 1.15rem; font-weight:800;
-      box-shadow:0 18px 40px rgba(39,37,34,.18);
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1050;
+      border-radius: 999px;
+      padding: .95rem 1.15rem;
+      font-weight: 800;
+      box-shadow: 0 18px 40px rgba(39,37,34,.18);
     }
-    footer { padding:2.5rem 0 3rem; color:var(--muted); }
-    .reveal { opacity:0; transform:translateY(22px); transition:.8s ease; }
-    .reveal.active { opacity:1; transform:translateY(0); }
-    @media (max-width:991px) {
-      .hero { min-height:auto; padding-top:7rem; }
-      .hero-visual { min-height:520px; margin-top:2rem; }
-      .photo-frame { inset:10px 10px 80px 10px; }
-      .floating-note { right:10px; top:8px; }
-      .floating-stat { left:10px; bottom:10px; }
+
+    footer {
+      padding: 2.5rem 0 3rem;
+      color: var(--muted);
     }
-    @media (max-width:575px) {
-      .hero-visual { min-height:420px; }
-      .floating-note, .floating-stat { width:180px; padding:.8rem; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: .8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 991px) {
+      .hero {
+        min-height: auto;
+        padding-top: 7rem;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+        margin-top: 2rem;
+      }
+
+      .photo-frame {
+        inset: 10px 10px 80px 10px;
+      }
+
+      .floating-note {
+        right: 10px;
+        top: 8px;
+      }
+
+      .floating-stat {
+        left: 10px;
+        bottom: 10px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .hero-visual {
+        min-height: 420px;
+      }
+
+      .floating-note,
+      .floating-stat {
+        width: 180px;
+        padding: .8rem;
+      }
     }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#home">Мама<span class="text-success">.психолог</span></a>
+      <a class="navbar-brand" href="#home">Попова Наталья Николаевна<span class="text-success">.психолог</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -139,6 +371,7 @@
           <li class="nav-item"><a class="nav-link" href="#reviews">Отзывы</a></li>
           <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
         </ul>
+        <a href="#booking" class="btn btn-brand">Записаться</a>
       </div>
     </div>
   </nav>
@@ -147,27 +380,67 @@
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-lg-6">
-          <div class="hero-badge mb-3 reveal active"><i class="bi bi-stars"></i> Сайт ко дню рождения</div>
+          <div class="hero-badge mb-3 reveal active">
+            <i class="bi bi-stars"></i>
+            Сайт ко дню рождения
+          </div>
+
           <h1 class="reveal active">Попова Наталья Николаевна — психолог с бережным подходом</h1>
-          <p class="lead-custom mt-4 reveal active">Персональный сайт Поповой Натальи Николаевны. Здесь можно познакомиться со специалистом, узнать о формате работы и оставить заявку на онлайн-консультацию.</p>
+
+          <p class="lead-custom mt-4 reveal active">
+            Персональный сайт Поповой Натальи Николаевны. Здесь можно познакомиться со специалистом,
+            узнать о формате работы и оставить заявку на онлайн-консультацию.
+          </p>
+
           <div class="d-flex flex-wrap gap-3 mt-4 reveal active">
             <a href="#booking" class="btn btn-brand btn-lg">Оставить заявку</a>
             <a href="#about" class="btn btn-soft btn-lg">Узнать подробнее</a>
           </div>
+
           <div class="row g-3 mt-4">
-            <div class="col-sm-4"><div class="mini-card reveal"><div class="stat-number">Около 1</div><div class="text-muted">года практики</div></div></div>
-            <div class="col-sm-4"><div class="mini-card reveal"><div class="stat-number">20</div><div class="text-muted">консультаций</div></div></div>
-            <div class="col-sm-4"><div class="mini-card reveal"><div class="stat-number">100%</div><div class="text-muted">внимания</div></div></div>
+            <div class="col-sm-4">
+              <div class="mini-card reveal">
+                <div class="stat-number">0</div>
+                <div class="text-muted">лет практики</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="mini-card reveal">
+                <div class="stat-number">200+</div>
+                <div class="text-muted">часов консультаций</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="mini-card reveal">
+                <div class="stat-number">100%</div>
+                <div class="text-muted">внимания к человеку</div>
+              </div>
+            </div>
           </div>
         </div>
+
         <div class="col-lg-6">
           <div class="hero-visual reveal active">
             <div class="photo-frame">
-              <img src="images/1.jpg" alt="Попова Наталья Николаевна" style="object-position:left center;">
-            </div>          
+              <img src="images/mama-photo.png" alt="Попова Наталья Николаевна" style="object-position:left center;">
+            </div>
+            <div class="floating-note">
+              <small class="text-uppercase text-muted fw-bold">Формат</small>
+              <h6 class="mt-2 mb-1 fw-bold">Онлайн-консультации</h6>
+              <p class="mb-0 text-muted small">Бережное сопровождение, поддержка в сложные периоды, работа с тревогой, самооценкой и отношениями.</p>
+            </div>
+            <div class="floating-stat">
+              <div class="d-flex align-items-center gap-3">
+                <div class="icon-pill mb-0"><i class="bi bi-heart-pulse"></i></div>
+                <div>
+                  <div class="fw-bold">Запись на сессию</div>
+                  <small class="text-muted">Онлайн по предварительной заявке</small>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </div>      
     </div>
   </section>
 
@@ -176,8 +449,12 @@
       <div class="birthday-banner reveal">
         <div class="row align-items-center g-4">
           <div class="col-lg-8">
-            <span class="text-uppercase small fw-bold text-muted">Поздравляем с днём рождения!!</span>
+            <span class="text-uppercase small fw-bold text-muted">С днём рождения</span>
             <h2 class="mt-2 mb-2 fw-bold">Спасибо за тепло, мудрость, внимание к людям и умение быть рядом в нужный момент</h2>
+            <p class="mb-0 text-muted">Эта страница одновременно работает как поздравление и как персональный сайт специалиста.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a href="#booking" class="btn btn-brand">Записаться</a>
           </div>
         </div>
       </div>
@@ -188,25 +465,59 @@
     <div class="container">
       <div class="row g-4 align-items-stretch">
         <div class="col-lg-5">
-          <div class="split-photo reveal"><img src="images/2.jpg" alt="Попова Наталья Николаевна" style="object-position:right center;"></div>
+          <div class="split-photo reveal">
+            <img src="images/mama-photo.png" alt="Попова Наталья Николаевна" style="object-position:right center;">
+          </div>
         </div>
         <div class="col-lg-7">
-          <div class="glass-card h-100 reveal">
+          <div class="glass-card reveal">
             <span class="text-uppercase small fw-bold text-muted">О специалисте</span>
             <h2 class="section-title mt-2">Попова Наталья Николаевна — психолог, который умеет слышать</h2>
-            <p class="section-subtitle mt-3"></p>
+            <p class="section-subtitle mt-3">
+              На этой странице можно рассказать о подходе к работе, профильном образовании,
+              специализациях и ценностях в профессии. Основной формат встреч — онлайн.
+            </p>
+
             <div class="row g-3 mt-2">
-              <div class="col-md-6"><div class="feature-card"><div class="icon-pill"><i class="bi bi-mortarboard"></i></div><h5>Образование и квалификация</h5><p class="text-muted mb-0">Диплом психолога полученный в 2026 году. А также различные практики для работы с клиентами.</p></div></div>
-              <div class="col-md-6"><div class="feature-card"><div class="icon-pill"><i class="bi bi-person-hearts"></i></div><h5>Стиль работы</h5><p class="text-muted mb-0">Эмпатия, конфиденциальность, уважение к темпу клиента, внимательное и безопасное пространство для диалога.</p></div></div>
+              <div class="col-md-6">
+                <div class="feature-card">
+                  <div class="icon-pill"><i class="bi bi-mortarboard"></i></div>
+                  <h5>Образование и квалификация</h5>
+                  <p class="text-muted mb-0">Здесь можно добавить дипломы, курсы повышения квалификации, методы и направления, в которых ведётся практика.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="feature-card">
+                  <div class="icon-pill"><i class="bi bi-person-hearts"></i></div>
+                  <h5>Стиль работы</h5>
+                  <p class="text-muted mb-0">Эмпатия, конфиденциальность, уважение к темпу клиента, внимательное и безопасное пространство для диалога.</p>
+                </div>
+              </div>
             </div>
+
             <div class="row g-3 mt-2">
-              <div class="col-sm-4"><div class="mini-card text-center"><div class="fw-bold">Конфиденциально</div><small class="text-muted"></small></div></div>
-              <div class="col-sm-4"><div class="mini-card text-center"><div class="fw-bold">Онлайн</div><small class="text-muted"></small></div></div>
-              <div class="col-sm-4"><div class="mini-card text-center"><div class="fw-bold">Поддержка</div><small class="text-muted"></small></div></div>
+              <div class="col-sm-4">
+                <div class="mini-card text-center">
+                  <div class="fw-bold">Конфиденциально</div>
+                  <small class="text-muted">Безопасное пространство</small>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="mini-card text-center">
+                  <div class="fw-bold">Онлайн</div>
+                  <small class="text-muted">Удобный формат встреч</small>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="mini-card text-center">
+                  <div class="fw-bold">Поддержка</div>
+                  <small class="text-muted">С вниманием к деталям</small>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>      
     </div>
   </section>
 
@@ -215,13 +526,38 @@
       <div class="mb-5 reveal">
         <span class="text-uppercase small fw-bold text-muted">Чем можно помочь</span>
         <h2 class="section-title mt-2">Основные направления работы</h2>
-        <p class="section-subtitle mt-3"></p>
+        <p class="section-subtitle mt-3">Этот блок можно доработать под реальные специализации Поповой Натальи Николаевны.</p>
       </div>
+
       <div class="row g-4">
-        <div class="col-md-6 col-xl-3"><div class="service-card reveal"><div class="icon-pill"><i class="bi bi-cloud-sun"></i></div><h5>Тревога и стресс</h5><p class="text-muted">Поддержка при внутреннем напряжении, тревожных мыслях, эмоциональной усталости.</p></div></div>
-        <div class="col-md-6 col-xl-3"><div class="service-card reveal"><div class="icon-pill"><i class="bi bi-people"></i></div><h5>Отношения</h5><p class="text-muted">Сложности в общении, конфликты, границы, семейные и партнёрские отношения.</p></div></div>
-        <div class="col-md-6 col-xl-3"><div class="service-card reveal"><div class="icon-pill"><i class="bi bi-flower1"></i></div><h5>Самооценка</h5><p class="text-muted">Работа с неуверенностью, самокритикой, внутренней опорой и личной устойчивостью.</p></div></div>
-        <div class="col-md-6 col-xl-3"><div class="service-card reveal"><div class="icon-pill"><i class="bi bi-stars"></i></div><h5>Жизненные перемены</h5><p class="text-muted">Поддержка в кризисные периоды, во время важных решений, перемен и утрат.</p></div></div>
+        <div class="col-md-6 col-xl-3">
+          <div class="service-card reveal">
+            <div class="icon-pill"><i class="bi bi-cloud-sun"></i></div>
+            <h5>Тревога и стресс</h5>
+            <p class="text-muted">Поддержка при внутреннем напряжении, тревожных мыслях, перегрузке и эмоциональной усталости.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="service-card reveal">
+            <div class="icon-pill"><i class="bi bi-people"></i></div>
+            <h5>Отношения</h5>
+            <p class="text-muted">Сложности в общении, конфликты, границы, семейные и партнёрские отношения.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="service-card reveal">
+            <div class="icon-pill"><i class="bi bi-flower1"></i></div>
+            <h5>Самооценка</h5>
+            <p class="text-muted">Работа с неуверенностью, самокритикой, внутренней опорой и личной устойчивостью.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="service-card reveal">
+            <div class="icon-pill"><i class="bi bi-stars"></i></div>
+            <h5>Жизненные перемены</h5>
+            <p class="text-muted">Поддержка в кризисные периоды, во время важных решений, перемен и утрат.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -232,17 +568,41 @@
         <div class="col-lg-6 reveal">
           <span class="text-uppercase small fw-bold text-muted">Как проходит работа</span>
           <h2 class="section-title mt-2">Понятный путь к первой онлайн-встрече</h2>
-          <p class="section-subtitle mt-3"></p>
+          <p class="section-subtitle mt-3">На странице заранее показаны этапы записи, чтобы человеку было проще оставить заявку и понимать, чего ожидать от первой консультации.</p>
         </div>
         <div class="col-lg-6">
           <div class="timeline-card reveal">
-            <div class="timeline-item"><div class="timeline-dot"></div><div><h6 class="mb-1 fw-bold">1. Заявка на сайте</h6><p class="text-muted mb-0">Посетитель оставляет имя, контакты и краткий запрос в форме записи.</p></div></div>
-            <div class="timeline-item"><div class="timeline-dot"></div><div><h6 class="mb-1 fw-bold">2. Обратная связь</h6><p class="text-muted mb-0">После отправки заявки приходит подтверждение на указанную почту, далее психолог приглашает вас на консультацию.</p></div></div>
-            <div class="timeline-item"><div class="timeline-dot"></div><div><h6 class="mb-1 fw-bold">3. Первая консультация</h6><p class="text-muted mb-0">Знакомство, обсуждение запроса, ожиданий и возможного формата дальнейшей работы.</p></div></div>
-            <div class="timeline-item mb-0"><div class="timeline-dot"></div><div><h6 class="mb-1 fw-bold">4. Дальнейшая поддержка</h6><p class="text-muted mb-0">Регулярные онлайн-сессии с вниманием к состоянию, целям и темпу клиента.</p></div></div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div>
+                <h6 class="mb-1 fw-bold">1. Заявка на сайте</h6>
+                <p class="text-muted mb-0">Посетитель оставляет имя, контакты и краткий запрос в форме записи.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div>
+                <h6 class="mb-1 fw-bold">2. Обратная связь</h6>
+                <p class="text-muted mb-0">После отправки заявки можно подтвердить запись письмом и уточнить удобное время.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div>
+                <h6 class="mb-1 fw-bold">3. Первая консультация</h6>
+                <p class="text-muted mb-0">Знакомство, обсуждение запроса, ожиданий и возможного формата дальнейшей работы.</p>
+              </div>
+            </div>
+            <div class="timeline-item mb-0">
+              <div class="timeline-dot"></div>
+              <div>
+                <h6 class="mb-1 fw-bold">4. Дальнейшая поддержка</h6>
+                <p class="text-muted mb-0">Регулярные онлайн-сессии с вниманием к состоянию, целям и темпу клиента.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </div>      
     </div>
   </section>
 
@@ -251,18 +611,47 @@
       <div class="mb-5 reveal">
         <span class="text-uppercase small fw-bold text-muted">Отзывы</span>
         <h2 class="section-title mt-2">Тёплые слова о работе</h2>
+        <p class="section-subtitle mt-3">Позже сюда можно поставить реальные отзывы клиентов, если это уместно.</p>
       </div>
+
       <div id="testimonialCarousel" class="carousel slide reveal" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active"><div class="testimonial-card"><div class="d-flex align-items-center gap-2 mb-3 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="fs-5">«Долгое время не решалась пойти к психологу, но этот специалист помог с первого сеанса. Очень комфортная, безоценочная атмосфера. Чувствуется искреннее желание помочь. После нескольких сессий я стала лучше понимать свои истинные желания и научилась справляться с тревогой. Спасибо за вашу работу!»</p><div class="text-muted">— Анастасия</div></div></div>
-          <div class="carousel-item"><div class="testimonial-card"><div class="d-flex align-items-center gap-2 mb-3 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="fs-5">«Хочу выразить огромную благодарность Наталье за её невероятную поддержку и профессионализм. Это действительно «золотой человек» — чуткая, внимательная и всегда готова выслушать. Благодаря её подходу я смог разобраться в себе, справиться с трудностями и обрести внутреннюю гармонию. Её советы всегда по делу, а поддержка ощущается даже в самых непростых ситуациях. Очень ценю её умение находить нужные слова и создавать атмосферу полного доверия. Если вам нужен настоящий профессионал и человек с большим сердцем — смело обращайтесь к Наталье!»</p><div class="text-muted">— Сергей П.</div></div></div>
-          <div class="carousel-item"><div class="testimonial-card"><div class="d-flex align-items-center gap-2 mb-3 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="fs-5">«Вы молодец! Развиваетесь и учитесь на протяжении всей жизни! После наших сеансов, узнала, что вы воспитали двух классных детей с отличными отношениями в семье! Надеюсь у вас все будет отлично и дальше и будете заниматься психологией, с еще большими трепетом и заботой, с которыми Вы помогли мне!❤️❤️❤️»</p><div class="text-muted">— Дарья Ф.</div></div></div>
-          <div class="carousel-item"><div class="testimonial-card"><div class="d-flex align-items-center gap-2 mb-3 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="fs-5">«Прекрасный человек, который всегда поддержит, выслушает и поможет в любой сложившейся ситуации, благодарен за каждую минуту совместных сеансов!»</p><div class="text-muted">— Александр П.</div></div></div>
-                  <div class="carousel-item"><div class="testimonial-card"><div class="d-flex align-items-center gap-2 mb-3 text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div><p class="fs-5">«Наталья для меня стала не просто специалистом, а человеком, с которым действительно чувствуешь себя в безопасности. С ней легко разговаривать! ее искренность, эмпатичность и открытость создают именно такую атмосферу, где становится не страшно быть собой и говорить так как всё на самом деле. Иногда нужно просто выслушать, и это она умеет лучше всего! Очень рекомендую Наталью как замечательного специалиста, с которым легко людям всех возрастов. она действительно замечательно ладит со всеми, от детей и подростков, до взрослых и людей в возрасте.»</p><div class="text-muted">— Дарья П.</div></div></div>
+          <div class="carousel-item active">
+            <div class="testimonial-card">
+              <div class="d-flex align-items-center gap-2 mb-3 text-warning">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fs-5">«Очень бережный и спокойный формат общения. После встречи появляется больше ясности и внутренней опоры.»</p>
+              <div class="text-muted">— Отзыв клиента</div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <div class="d-flex align-items-center gap-2 mb-3 text-warning">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fs-5">«Чувствуется внимание к деталям, уважение к человеку и профессиональная деликатность.»</p>
+              <div class="text-muted">— Отзыв клиента</div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <div class="d-flex align-items-center gap-2 mb-3 text-warning">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fs-5">«На консультации спокойно, безопасно и понятно. Уже после первых встреч становится легче сформулировать, что происходит внутри.»</p>
+              <div class="text-muted">— Отзыв клиента</div>
+            </div>
+          </div>
         </div>
+
         <div class="d-flex gap-2 mt-4">
-          <button class="btn btn-soft" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"><i class="bi bi-arrow-left"></i></button>
-          <button class="btn btn-soft" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"><i class="bi bi-arrow-right"></i></button>
+          <button class="btn btn-soft" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+          <button class="btn btn-soft" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+            <i class="bi bi-arrow-right"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -270,11 +659,44 @@
 
   <section class="section" id="faq">
     <div class="container">
-      <div class="mb-5 reveal"><span class="text-uppercase small fw-bold text-muted">Частые вопросы</span><h2 class="section-title mt-2">Что важно знать перед первой записью</h2></div>
+      <div class="mb-5 reveal">
+        <span class="text-uppercase small fw-bold text-muted">Частые вопросы</span>
+        <h2 class="section-title mt-2">Что важно знать перед первой записью</h2>
+      </div>
+
       <div class="accordion reveal" id="faqAccordion">
-        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">В каком формате проходят консультации?</button></h2><div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">Основной формат встреч — онлайн.</div></div></div>
-        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">С какими запросами можно обратиться?</button></h2><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">Тревога, стресс, отношения, самооценка, внутренние конфликты, жизненные перемены и поиск опоры.</div></div></div>
-        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Что произойдёт после заявки?</button></h2><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">После отправки формы заявка может быть подтверждена письмом и дальнейшей обратной связью по email или телефону.</div></div></div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              В каком формате проходят консультации?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body text-muted">Основной формат встреч — онлайн.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              С какими запросами можно обратиться?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body text-muted">Тревога, стресс, отношения, самооценка, внутренние конфликты, жизненные перемены и поиск опоры.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+              Что произойдёт после заявки?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body text-muted">После отправки формы заявка может быть подтверждена письмом и дальнейшей обратной связью по email или телефону.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -286,43 +708,99 @@
           <div class="contact-card reveal h-100">
             <span class="text-uppercase small fw-bold text-muted">Запись на сессию</span>
             <h2 class="section-title mt-2">Оставьте заявку</h2>
-            <p class="section-subtitle mt-3"></p>
+            <p class="section-subtitle mt-3">Форма подключена к backend для отправки письма специалисту и подтверждения клиенту, если указан email.</p>
+
             <div class="mt-4 d-grid gap-3">
-              <div class="d-flex gap-3 align-items-start"><div class="icon-pill mb-0"><i class="bi bi-envelope"></i></div><div><div class="fw-bold">Email для записи</div><div class="text-muted">nat.nik1977@mail.ru</div></div></div>
-              <div class="d-flex gap-3 align-items-start"><div class="icon-pill mb-0"><i class="bi bi-telephone"></i></div><div><div class="fw-bold">Телефон</div><div class="text-muted">8 916 418-45-05</div></div></div>
-              <div class="d-flex gap-3 align-items-start"><div class="icon-pill mb-0"><i class="bi bi-laptop"></i></div><div><div class="fw-bold">Формат встреч</div><div class="text-muted">Онлайн</div></div></div>
+              <div class="d-flex gap-3 align-items-start">
+                <div class="icon-pill mb-0"><i class="bi bi-envelope"></i></div>
+                <div>
+                  <div class="fw-bold">Email для записи</div>
+                  <div class="text-muted">nat.nik1977@mail.ru</div>
+                </div>
+              </div>
+              <div class="d-flex gap-3 align-items-start">
+                <div class="icon-pill mb-0"><i class="bi bi-telephone"></i></div>
+                <div>
+                  <div class="fw-bold">Телефон</div>
+                  <div class="text-muted">8 916 418-45-05</div>
+                </div>
+              </div>
+              <div class="d-flex gap-3 align-items-start">
+                <div class="icon-pill mb-0"><i class="bi bi-laptop"></i></div>
+                <div>
+                  <div class="fw-bold">Формат встреч</div>
+                  <div class="text-muted">Онлайн</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="col-lg-7">
           <div class="form-card reveal h-100">
             <form id="bookingForm" class="row g-3">
-              <div class="col-md-6"><label class="form-label">Ваше имя</label><input id="clientName" type="text" class="form-control" placeholder="Введите имя" required></div>
-              <div class="col-md-6"><label class="form-label">Телефон или email</label><input id="clientContact" type="text" class="form-control" placeholder="Как с вами связаться" required></div>
-              <div class="col-md-6"><label class="form-label">Формат</label><select id="clientFormat" class="form-select" required><option value="">Выберите формат</option><option>Онлайн</option><option>Нужна консультация по формату</option></select></div>
-              <div class="col-md-6"><label class="form-label">Удобное время</label><input id="clientTime" type="text" class="form-control" placeholder="Например: будни после 18:00"></div>
-              <div class="col-12"><label class="form-label">С каким запросом хотите обратиться?</label><textarea id="clientMessage" class="form-control" rows="5" placeholder="Коротко опишите вашу ситуацию"></textarea></div>
+              <div class="col-md-6">
+                <label class="form-label" for="clientName">Ваше имя</label>
+                <input id="clientName" type="text" class="form-control" placeholder="Введите имя" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="clientContact">Телефон или email</label>
+                <input id="clientContact" type="text" class="form-control" placeholder="Как с вами связаться" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="clientFormat">Формат</label>
+                <select id="clientFormat" class="form-select" required>
+                  <option value="">Выберите формат</option>
+                  <option>Онлайн</option>
+                  <option>Нужна консультация по формату</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="clientTime">Удобное время</label>
+                <input id="clientTime" type="text" class="form-control" placeholder="Например: будни после 18:00">
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="clientMessage">С каким запросом хотите обратиться?</label>
+                <textarea id="clientMessage" class="form-control" rows="5" placeholder="Коротко опишите вашу ситуацию"></textarea>
+              </div>
               <div class="col-12 d-flex flex-column flex-sm-row gap-3 align-items-sm-center justify-content-between mt-2">
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="agree" required><label class="form-check-label text-muted" for="agree">Я согласен(а) на обработку данных для обратной связи</label></div>
-                <button class="btn btn-brand" type="submit">Отправить заявку</button>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="agree" required>
+                  <label class="form-check-label text-muted" for="agree">Я согласен(а) на обработку данных для обратной связи</label>
+                </div>
+                <button class="btn btn-brand" type="submit" id="submitButton">Отправить заявку</button>
               </div>
             </form>
+
+            <div id="formMessage" class="alert mt-4 d-none" role="alert"></div>
+
+            <div class="alert alert-warning mt-3 mb-0">
+              Если клиент укажет только телефон, подтверждение на почту ему не отправится. Письмо клиенту уходит только при вводе email.
+            </div>
           </div>
         </div>
-      </div>
+      </div>      
     </div>
   </section>
 
   <footer>
     <div class="container">
       <div class="row g-4 align-items-center">
-        <div class="col-lg-7"><div class="fw-bold">Сайт Поповой Натальи Николаевны. Москва 2026. Все права защищены.</div><div></div></div>
-        <div class="col-lg-5 text-lg-end"><a href="#home" class="text-decoration-none text-muted me-3">Наверх</a></div>
+        <div class="col-lg-7">
+          <div class="fw-bold">Сайт Поповой Натальи Николаевны</div>
+          <div>Контакты и фотографии обновлены. При необходимости можно добавить образование, специализации, стоимость и реальные отзывы.</div>
+        </div>
+        <div class="col-lg-5 text-lg-end">
+          <a href="#home" class="text-decoration-none text-muted me-3">Наверх</a>
+          <a href="#booking" class="text-decoration-none text-muted">Записаться</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <a href="#booking" class="btn btn-brand floating-cta"><i class="bi bi-chat-heart me-1"></i> Запись</a>
+  <a href="#booking" class="btn btn-brand floating-cta">
+    <i class="bi bi-chat-heart me-1"></i> Запись
+  </a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -336,40 +814,52 @@
 
     const bookingForm = document.getElementById('bookingForm');
     const formMessage = document.getElementById('formMessage');
+    const submitButton = document.getElementById('submitButton');
 
     bookingForm.addEventListener('submit', async function(e) {
       e.preventDefault();
 
+      submitButton.disabled = true;
+      submitButton.textContent = 'Отправка...';
+
       const payload = {
         psychologistName: 'Попова Наталья Николаевна',
         psychologistEmail: 'nat.nik1977@mail.ru',
-        clientName: document.getElementById('clientName').value,
-        clientContact: document.getElementById('clientContact').value,
+        clientName: document.getElementById('clientName').value.trim(),
+        clientContact: document.getElementById('clientContact').value.trim(),
         format: document.getElementById('clientFormat').value,
-        preferredTime: document.getElementById('clientTime').value,
-        requestText: document.getElementById('clientMessage').value
+        preferredTime: document.getElementById('clientTime').value.trim(),
+        requestText: document.getElementById('clientMessage').value.trim()
       };
 
       try {
         const response = await fetch('/api/book-session', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify(payload)
         });
 
-        if (!response.ok) throw new Error('Ошибка отправки');
+        const data = await response.json();
 
-        formMessage.classList.remove('d-none', 'alert-danger');
-        formMessage.classList.add('alert-success');
-        formMessage.textContent = 'Заявка отправлена. Письмо можно отправить и специалисту, и клиенту после подключения серверного обработчика.';
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error || 'Ошибка отправки');
+        }
+
+        formMessage.className = 'alert alert-success mt-4';
+        formMessage.textContent = 'Заявка отправлена. Специалист получит письмо, а клиент — подтверждение, если был указан email.';
+        formMessage.classList.remove('d-none');
         bookingForm.reset();
       } catch (error) {
-        formMessage.classList.remove('d-none', 'alert-success');
-        formMessage.classList.add('alert-danger');
-        formMessage.textContent = 'Сайт готов, но сервер отправки писем пока не подключён. Нужно добавить backend для email-уведомлений.';
+        formMessage.className = 'alert alert-danger mt-4';
+        formMessage.textContent = error.message || 'Не удалось отправить заявку.';
+        formMessage.classList.remove('d-none');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Отправить заявку';
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-
-      formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   </script>
 </body>
