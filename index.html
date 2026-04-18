@@ -120,7 +120,7 @@
     }
     @media (max-width:575px) {
       .hero-visual { min-height:420px; }
-      .floating-note, .floating-stat { width:180px; padding:.8rem; }
+      .floating-note, .floating-stat { width:180px; padding:.8rem; }   
     }
   </style>
 </head>
@@ -147,7 +147,6 @@
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-lg-6">
-          <div class="hero-badge mb-3 reveal active"><i class="bi bi-stars"></i> Сайт ко дню рождения</div>
           <h1 class="reveal active">Попова Наталья Николаевна — психолог с бережным подходом</h1>
           <p class="lead-custom mt-4 reveal active">Персональный сайт Поповой Натальи Николаевны. Здесь можно познакомиться со специалистом, узнать о формате работы и оставить заявку на онлайн-консультацию.</p>
           <div class="d-flex flex-wrap gap-3 mt-4 reveal active">
@@ -365,16 +364,16 @@
         const data = await response.json();
 
         if (!response.ok || !data.ok) {
-          throw new Error(data.error || 'Ошибка отправки');
+          throw new Error(data.error || 'Ошибка отправки. Свяжитесь по контактным данным.');
         }
 
         formMessage.className = 'alert alert-success mt-4';
-        formMessage.textContent = 'Заявка отправлена. Если указан email, клиент получит подтверждение на почту.';
+        formMessage.textContent = 'Заявка отправлена. Проверьте подтверждение на почте.';
         formMessage.classList.remove('d-none');
         bookingForm.reset();
       } catch (error) {
         formMessage.className = 'alert alert-danger mt-4';
-        formMessage.textContent = error.message || 'Не удалось отправить заявку.';
+        formMessage.textContent = error.message || 'Не удалось отправить заявку. Свяжитесь по контактным данным.';
         formMessage.classList.remove('d-none');
       } finally {
         submitButton.disabled = false;
